@@ -36,9 +36,12 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        pip install -r backend/requirements.txt
-        pip install pytest
+        cd backend
+        pip install -r requirements.txt
+
+    - name: List Files
+      run: ls -l backend/tests
 
     - name: Run Tests
       run: |
-        PYTHONPATH=/app pytest /app/tests
+        PYTHONPATH=backend pytest backend/tests
