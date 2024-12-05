@@ -4,14 +4,14 @@ FROM python:3.9
 # Set working directory
 WORKDIR /app
 
-# Copy the requirements file (create one if you have dependencies)
-COPY requirements.txt requirements.txt
+# Copy the backend directory into /app
+COPY . /app
 
 # Install dependencies
 RUN pip install -r requirements.txt
 
-# Copy the rest of the application code
-COPY .. .
+# Set the PYTHONPATH environment variable
+ENV PYTHONPATH=/app
 
 # Expose the port
 EXPOSE 5001
